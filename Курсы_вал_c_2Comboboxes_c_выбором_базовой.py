@@ -25,7 +25,7 @@ def exchange():
                 base = currencies[base_code]
                 target = currencies[target_code]
                 mb.showinfo("Курс обмена", f"Курс {exchange_rate:.2f} {target}"
-                                           f" за 1 {base}")
+                                           f"\nза 1 {base}")
             else:
                 mb.showerror("Ошибка", f"Валюта {target_code} не найдена")
         except Exception as e:
@@ -44,19 +44,19 @@ currencies = {"USD": "Американский доллар", "EUR": "Евро",
 # Создание графического интерфейса
 window = Tk()
 window.title("Курс обмена валюты")
-window.geometry("360x250")
+window.geometry("360x220")
 
-Label(text="Базовая валюта:").pack(padx=10, pady=5)
+Label(text="Базовая валюта:").pack(padx=10, pady=(10, 2))
 base_combobox = ttk.Combobox(values=list(currencies.keys()))
-base_combobox.pack(padx=10, pady=5)
+base_combobox.pack(padx=10, pady=(0, 5))
 
-Label(text="Целевая валюта:").pack(padx=10, pady=5)
+Label(text="Целевая валюта:").pack(padx=10, pady=(10, 2))
 target_combobox = ttk.Combobox(values=list(currencies.keys()))
-target_combobox.pack(padx=10, pady=5)
+target_combobox.pack(padx=10, pady=(0, 5))
 target_combobox.bind("<<ComboboxSelected>>", update_currency_label)
 
 currency_label = ttk.Label()
-currency_label.pack(padx=10, pady=10)
+currency_label.pack(padx=10, pady=(0, 10))
 
 Button(text="Получить курс обмена", command=exchange).pack(padx=10, pady=10)
 
